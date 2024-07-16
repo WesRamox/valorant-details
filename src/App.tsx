@@ -21,10 +21,6 @@ export default function App() {
     setMoreDetailsAgent(agentDetails);
     setAgentModal(true);
   }
-
-  function closeAgentModal() {
-    setAgentModal(false)
-  }
   
   useEffect(() => {
     const response = fetch("https://valorant-api.com/v1/agents?language=pt-BR")
@@ -36,54 +32,65 @@ export default function App() {
   }, [])
 
   return (
-    <div className="flex flex-wrap gap-20 items-center justify-center">
-      {agents
-        .filter(agent => agent.isPlayableCharacter)
-        .map(agent => (
-          <div key={agent.uuid} className="p-5 gap-6 flex flex-col items-center justify-center">
-            <img
-              className="w-20"
-              src={agent.displayIconSmall}
-              alt={agent.displayName}
-            />
-            <p className="text-2xl font-semibold">{agent.displayName}</p>
-            <button onClick={() => openAgentModal(agent.uuid)}>
-              Mais sobre
-            </button>
-          </div>
-        ))
-      }
-
+    <section className="flex flex-col bg-[url('./assets/bg.png')] bg-no-repeat bg-cover w-screen min-h-screen flex-wrap bg-center items-center gap-8 justify-end pb-10">
       {agentModal && (
-        <div className="fixed inset-0 bg-black/90 flex items-center justify-center">
-          {moreDetailsAgent.map((agentDetails) => (
-            <div key={agentDetails.uuid} className="flex items-center flex-col justify-center gap-5">
-              <div className="flex items-center justify-center">
-              <img 
-                className="w-96 z-10"
-                src={agentDetails.fullPortraitV2} 
-                alt={agentDetails.displayName} 
-              />
-              <img 
-                className="w-80 absolute z-0 mt-10 opacity-10"
-                src={agentDetails.background} 
-                alt={agentDetails.displayName} 
-              />
+        <div className="flex items-center justify-center w-full">
+            {moreDetailsAgent.map((agentDetails) => (
+              <div key={agentDetails.uuid} className="flex items-start w-full justify-around gap-5">
+                <div className="selectedAgent flex gap-3">
+                  <img src={agentDetails.displayIconSmall} className="w-20 border-white border-[1px] bg-slate-200 bg-opacity-20" />
+                  <div className="flex flex-col">
+                    <p className="text-4xl font-semibold text-zinc-300 justify-center gap-5 flex items-center w-full">
+                      {agentDetails.displayName} (Eu) 
+                    </p> 
+                    <p>
+                      {agentDetails.displayName}
+                    </p>
+                  </div>
+                </div>
+                <div className="relative flex items-center justify-center">
+                  <img 
+                    className="w-[38rem] z-10"
+                    src={agentDetails.fullPortraitV2} 
+                    alt={agentDetails.displayName} 
+                  />
+                  <img 
+                    className="w-[30rem] absolute mt-10 -z-20 opacity-10"
+                    src={agentDetails.background} 
+                    alt={agentDetails.displayName} 
+                  />
+                </div>
+                <div className="description flex items-center justify-center mt-2 flex-col gap-5">
+
+                </div>
+                <div className="bg-black">
+                  <p>{agentDetails.displayName}</p>
+                </div>
               </div>
-              <div className="description flex items-center justify-center mt-2 flex-col gap-5">
-                <p className="text-4xl font-semibold text-zinc-300 justify-center gap-5 flex items-center w-full">
-                  <img src={agentDetails.displayIconSmall} className="w-10" />
-                  {agentDetails.displayName}
-                  </p>
-                <p className="text-md text-center w-[32rem] text-zinc-400">{agentDetails.description}</p>
-              </div>
-            </div>
-          ))}
-          <button onClick={closeAgentModal} className="absolute top-20 right-20 text-blue-400"><X/></button>
+            ))}
         </div>
       )}
 
-    </div>
+      <div className="agents flex flex-wrap w-[35rem] gap-1">
+        {agents
+          .filter(agent => agent.isPlayableCharacter)
+          .map(agent => (
+            <button 
+              key={agent.uuid}
+              className="bg-transparent p-0 border-none" 
+              onClick={() => openAgentModal(agent.uuid)}
+            >
+              <div className="flex flex-col items-center justify-center border-red border-[1px] hover:border-yellow-200">
+                <img
+                  className="w-14"
+                  src={agent.displayIconSmall}
+                  alt={agent.displayName}
+                />
+              </div>
+            </button>
+          ))}
+      </div>
+    </section>
   )
 }
 
