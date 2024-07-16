@@ -70,8 +70,11 @@ export default function App() {
                 alt={agentDetails.displayName} 
               />
               </div>
-              <div className="description flex items-center justify-center flex-col gap-5">
-                <p className="text-4xl font-semibold text-zinc-300">{agentDetails.displayName}</p>
+              <div className="description flex items-center justify-center mt-2 flex-col gap-5">
+                <p className="text-4xl font-semibold text-zinc-300 justify-center gap-5 flex items-center w-full">
+                  <img src={agentDetails.displayIconSmall} className="w-10" />
+                  {agentDetails.displayName}
+                  </p>
                 <p className="text-md text-center w-[32rem] text-zinc-400">{agentDetails.description}</p>
               </div>
             </div>
