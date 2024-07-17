@@ -18,6 +18,10 @@
   
 }
 
+p, h1, h2 {
+  cursor: default;
+}
+
 * {
   margin: 0;
   padding: 0;
