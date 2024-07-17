@@ -23,7 +23,7 @@ const AgentAbilities = ({agent}: AgentAbilitiesProps) => {
             key={ability.displayName}
             onClick={() => showAbilityDetails(ability)}
             disabled={selectedAbility?.displayName === ability.displayName}
-            className="bg-slate-200 bg-opacity-5 p-3 disabled:bg-yellow-100 disabled:bg-opacity-20"
+            className="bg-slate-200 bg-opacity-5 p-3 disabled:cursor-pointer disabled:bg-yellow-100 disabled:bg-opacity-20"
           >
             <img src={ability.displayIcon} className="min-w-10 w-10" alt="" />
           </button>

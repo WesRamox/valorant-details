@@ -30,7 +30,7 @@ export default function App() {
     <section 
       className="flex flex-col bg-[url('./assets/bg.png')] bg-no-repeat bg-cover w-screen min-h-screen flex-wrap bg-center items-center gap-8 justify-end pb-10"
     >
-      <ArrowLeftIcon size={50} className="absolute top-5 left-5"  />
+      <ArrowLeftIcon size={50} className="absolute top-5 left-5 hover:cursor-pointer" />
 
       {moreDetailsAgent.length > 0 ? (
         <MoreDetailsAgent moreDetailsAgent={moreDetailsAgent}/>
