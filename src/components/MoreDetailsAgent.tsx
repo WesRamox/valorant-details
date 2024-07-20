@@ -10,8 +10,8 @@ interface MoreDetailsAgentProps {
 const MoreDetailsAgent = ({ moreDetailsAgent }: MoreDetailsAgentProps) => {
   return(
     moreDetailsAgent.map((agent => (
-      <div key={agent.displayName} className="flex px-10 gap-6 items-center justify-center w-full">
-        <div className="flex items-start w-full justify-around gap-5 px-10">
+      <div key={agent.displayName} className="flex px-20 gap-6 items-center justify-center w-full">
+        <div className="flex items-start w-full justify-around gap-5 min-h-[35rem] px-10">
           <div className="selectedAgent w-1/3 flex gap-3">
             <div className="relative">
               <img src={agent.displayIconSmall} className="w-20 border-white border-[1px] bg-slate-200 bg-opacity-20" />
